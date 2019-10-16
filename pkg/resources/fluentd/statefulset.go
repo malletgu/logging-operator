@@ -74,8 +74,9 @@ func (r *Reconciler) statefulsetSpec() *appsv1.StatefulSetSpec {
 					*r.fluentContainer(),
 					*newConfigMapReloader(r.Logging.Spec.FluentdSpec.ConfigReloaderImage),
 				},
-				NodeSelector: r.Logging.Spec.FluentdSpec.NodeSelector,
-				Tolerations:  r.Logging.Spec.FluentdSpec.Tolerations,
+				NodeSelector:       r.Logging.Spec.FluentdSpec.NodeSelector,
+				Tolerations:        r.Logging.Spec.FluentdSpec.Tolerations,
+				ServiceAccountName: r.Logging.Spec.FluentdSpec.ServiceAccountName,
 			},
 		},
 	}
